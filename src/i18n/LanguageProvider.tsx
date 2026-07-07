@@ -11,10 +11,10 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(undefine
 
 function getInitialLanguage(): Language {
   if (typeof window === "undefined") {
-    return "zh";
+    return "en";
   }
 
-  return window.localStorage.getItem(languageStorageKey) === "en" ? "en" : "zh";
+  return window.localStorage.getItem(languageStorageKey) === "zh" ? "zh" : "en";
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
@@ -46,4 +46,3 @@ export function useLanguage() {
 
   return context;
 }
-

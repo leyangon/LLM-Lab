@@ -1,6 +1,6 @@
 export type Language = "zh" | "en";
 
-export const languageStorageKey = "llm-learning-lab-language";
+export const languageStorageKey = "llm-learning-lab-language-v2";
 
 export const translations = {
   zh: {
