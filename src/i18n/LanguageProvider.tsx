@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext, useMemo, useState } from "react";
+import { createContext, type ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import { languageStorageKey, type Language, type TranslationKey, translations } from "./translations";
 
 type LanguageContextValue = {
@@ -19,6 +19,10 @@ function getInitialLanguage(): Language {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+
+  useEffect(() => {
+    document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+  }, [language]);
 
   const value = useMemo<LanguageContextValue>(() => {
     function setLanguage(nextLanguage: Language) {
